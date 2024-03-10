@@ -1,20 +1,13 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import Image from 'next/image'
+import {useCharacters} from "@/assets/hooks/useCharacters";
+import {CharacterCard} from "@/components/CharacterCard/CharacterCard";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export default function Characters() {
-    const [characters, setCharacters] = useState< null | CharacterType[]>(null)
-    useEffect(()=>{
-        axios.get('https://rickandmortyapi.com/api/character')
-            .then(res=>{
-                setCharacters(res.data.results)
-            })
-    },[])
+  const characters = useCharacters()
+
 
   return (
     <>
@@ -26,19 +19,11 @@ export default function Characters() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
           {
-              characters && characters.map((character:CharacterType)=>(
-                  <div key={character.id}>
-                      <div>{character.name}</div>
-                      <Image alt={`Picture of ${character.name}`} src={character.image} width={300} height={300}/>
-                  </div>
+              characters && characters.map((character)=>(
+                  <CharacterCard key={character.id} name={character.name} image={character.image}/>
               ))
           }
       </main>
     </>
   );
-}
-type CharacterType ={
-    id: number
-    name: string
-    image: string
 }
