@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {Nullable} from "@/assets/types";
+import {CharacterType, Nullable} from "@/assets/types";
 
 export const useCharacters =(): Nullable<CharacterType[]> =>{
     const [characters, setCharacters] = useState< Nullable<CharacterType[]>>(null)
@@ -11,10 +11,4 @@ export const useCharacters =(): Nullable<CharacterType[]> =>{
             })
     },[])
     return characters
-}
-//types
- type CharacterType ={
-    id: number
-    name: string
-    image: string
 }
