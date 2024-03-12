@@ -1,16 +1,18 @@
 import Image from "next/image";
 import s from './CharacterCard.module.scss'
+import {CharacterType} from "@/assets/types";
 
 type CharacterCardType={
-    name: string
-    image: string
+    character: CharacterType
 }
-export const CharacterCard = ({ name, image}: CharacterCardType) => {
+
+export const CharacterCard = ({character}: CharacterCardType) => {
+
     return (
         <div className={s.wrapper}>
-            <div>{name}</div>
-            <Image alt={`Picture of ${name}`} src={image} width={300} height={300}/>
+            <div>{character.name}</div>
+            <Image alt={`Picture of ${character.name}`}  src={character.image} width={300} height={300}/>
         </div>
     );
-};
+};{}
 

@@ -6,6 +6,7 @@ export const Navbar = () => {
         <div className={s.links}>
             <Link href={`/`}>Main</Link>
             <Link href={`/characters`}>Characters</Link>
+            <Link href={`/locations`}>Locations</Link>
             {/* для перехада по страницам   */}
         </div>
     );

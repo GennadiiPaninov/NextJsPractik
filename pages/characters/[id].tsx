@@ -10,9 +10,9 @@ function Character() {
 
     return (
         <>
-            <HeadMeta title={"Characters"}/>
+            <HeadMeta title={"Character"}/>
             {
-                character && <CharacterCard key={character.id} name={character.name} image={character.image}/>
+                character &&  <CharacterCard key={character.id} character={character}/>
             }
         </>
     );

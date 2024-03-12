@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",// настраивает абсолютный путь в данном случае до директории
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

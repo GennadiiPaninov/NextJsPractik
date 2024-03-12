@@ -5,9 +5,9 @@ import {getLayout} from "@/components/Layout/Layout";
 import Link from "next/link";
 
 
- function Characters() {
+function Characters() {
   const characters = useCharacters()
-
+    console.log(characters)
 
   return (
     <>
@@ -15,7 +15,7 @@ import Link from "next/link";
           {
               characters && characters.map((character)=>(
                   <Link key={character.id} href={`/characters/${character.id}`}>
-                      <CharacterCard  name={character.name} image={character.image}/>
+                      <CharacterCard  character={character}/>
                   </Link>
 
               ))
