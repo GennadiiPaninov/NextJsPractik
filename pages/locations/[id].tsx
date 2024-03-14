@@ -10,8 +10,10 @@ import {GetTheIdFromUrl} from "@/assets/utils/getTheIdFromUrl";
 
 function Location() {
     const location = useLocation()
+    console.log(location?.residents)
     const arrWithCharactersId = GetTheIdFromUrl({ urls: location?.residents ?? [] })
     const characters = useMultipleCharacter({ arrId: arrWithCharactersId ?? [] })
+
     return (
         <>
             <HeadMeta title={"Location"}/>
@@ -19,6 +21,7 @@ function Location() {
             {
                 location && <LocationCard key={location.id} name={location.name} dimension={location.dimension} created={location.created} type={location.type}/>
             }
+            <h2>Residents</h2>
             {
                 characters && characters.map(character=>{
                     return <Link key={character.id} href={`/characters/${character.id}`}>

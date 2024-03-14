@@ -8,7 +8,7 @@ export const useLocations =(): Nullable<LocationType[]> =>{
         axios.get(`${process.env.NEXT_PUBLIC_RICK_AND_MORTY_API_URL}location`)
             .then(res=>{
                 setlocations(res.data.results)
-                console.log(res)
+
             })
     },[])
     return locations
