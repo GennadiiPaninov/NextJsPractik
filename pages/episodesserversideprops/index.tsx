@@ -5,13 +5,16 @@ import {GetStaticProps} from "next";
 import {useState} from "react";
 
 
-export const getStaticProps = (async ()=>{
+export const getServerSideProps = (async ()=>{
     const res = await fetch(`${process.env.NEXT_PUBLIC_RICK_AND_MORTY_API_URL}episode`)
     const resp = await res.json()
     const result = resp.results
-
+    if (!result) {
+       return {
+          notFound: true,
+        }
+    }
     return { props: { result },
-    revalidate: 10
     }
     }
 ) satisfies GetStaticProps<{ // satisfies это для гибкой типизации
@@ -24,7 +27,7 @@ type PropsType = {
 
 function Episodes({result}: PropsType) {
     console.log(result)
-    const epis = result as Nullable<EpisodeType[]>
+    const epis = result
     return (
         <>
             <HeadMeta title={"Characters"}/>
